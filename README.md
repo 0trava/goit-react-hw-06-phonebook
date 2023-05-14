@@ -13,10 +13,8 @@
   
 <p> Виконай рефакторинг коду застосунку «Книга контактів», додавши управління станом за допомогою бібліотеки Redux Toolkit. Нехай Redux-стан виглядає наступним чином.</p> 
 
-<p> {
-  contacts: [],
-  filter: ""
-}</p> 
+![image](https://github.com/0trava/goit-react-hw-06-phonebook/assets/102797527/21c01a0a-6db3-4791-8172-8cf0fe3148aa)
+
 
 <p> Створи сховище з configureStore()
 Використовуй функцію createSlice()
