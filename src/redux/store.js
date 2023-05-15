@@ -1,5 +1,3 @@
-
-
 import { configureStore } from "@reduxjs/toolkit";
 import { tasksReducer } from "./tasksContacts";
 import { filtersReducer } from "./filterContacts";

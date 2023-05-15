@@ -2,10 +2,18 @@ import PropTypes from 'prop-types';
 import css from "./ContactForm.module.css"; // підключення стилів на картку
 import {useState} from 'react'; // пакети для роботи зі станом
 
+// Імпортуємо хук
+// import { useDispatch } from "react-redux";
+// import { addContacts } from "../../redux/tasksContacts";
+
 export const ContactForm =({addContact})=> {
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
+
+
+    // Отримуємо посилання на функцію відправки екшенів
+    // const dispatch = useDispatch();
 
 
     // INPUT - зберігаємо данні при вводі текста 
@@ -21,6 +29,9 @@ export const ContactForm =({addContact})=> {
         <form className={css.form} 
                   onSubmit={evt => {
                     evt.preventDefault(); // відміна перезавантаження сторінки
+                     // Викликаємо генератор екшену та передаємо текст завдання для поля payload
+                     // Відправляємо результат – екшен створення завдання
+                    // dispatch(addContacts( name, number ));
                     addContact({ name, number }); // Передача стану компонента до addContact як (props) з батьківського компоненту.
                     setName("") // очищення вмісту форми
                     setNumber(""); // очищення вмісту форми
