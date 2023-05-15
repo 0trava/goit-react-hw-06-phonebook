@@ -14,8 +14,8 @@ import { contactFilter } from "../redux/filterContacts";
 export const App = () => {
 
   const dispatch = useDispatch();// Отримуємо посилання на функцію відправки екшенів
-  const contact = useSelector(state => state.tasks);// ОТРИМАННЯ МАСИВУ 
-  const filter = useSelector(state => state.filters);// ОТРИМАННЯ FILTER
+  const contact = useSelector(state => state.contacts);// ОТРИМАННЯ МАСИВУ 
+  const filter = useSelector(state => state.filter);// ОТРИМАННЯ FILTER
 
 
 // ADD CONTACT - додаємо контакт до масиву

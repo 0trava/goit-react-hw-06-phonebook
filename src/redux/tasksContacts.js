@@ -13,7 +13,7 @@ import { createSlice, nanoid } from "@reduxjs/toolkit";
 
 const tasksSlice = createSlice({
 
-  name: "tasks",
+  name: "contacts",
   initialState: startWork,
 
   reducers: {
