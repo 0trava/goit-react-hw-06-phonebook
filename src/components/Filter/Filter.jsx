@@ -1,14 +1,21 @@
 import PropTypes from 'prop-types';
 import css from "./Filter.module.css"; // підключення стилів на картку
 
-export const Filter = ({handleChange, filter}) => {
+// Імпортуємо хук
+import { useDispatch, useSelector } from "react-redux";
+import { contactFilter } from "../../redux/filterContacts";
+
+export const Filter = () => {
+
+  const dispatch = useDispatch();// Отримуємо посилання на функцію відправки екшенів
+  const filter = useSelector(state => state.filter);// ОТРИМАННЯ FILTER
 
     return (
       <div className={css.form__filter}>
           <label htmlFor="Find">Find contacts by name</label>
           <input
           value={filter}
-          onChange={handleChange}
+          onChange={event => dispatch(contactFilter( event.currentTarget.value ))}
           className={css.filter__input}
           type="text"
           name="filter"

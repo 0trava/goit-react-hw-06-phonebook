@@ -1,19 +1,18 @@
-import PropTypes from 'prop-types';
 import css from "./ContactForm.module.css"; // підключення стилів на картку
 import {useState} from 'react'; // пакети для роботи зі станом
 
 // Імпортуємо хук
-// import { useDispatch } from "react-redux";
-// import { addContacts } from "../../redux/tasksContacts";
+import { useSelector, useDispatch } from "react-redux";
+import { addContacts } from "../../redux/tasksContacts";
 
-export const ContactForm =({addContact})=> {
+export const ContactForm =()=> {
 
   const [name, setName] = useState('');
   const [number, setNumber] = useState('');
 
 
-    // Отримуємо посилання на функцію відправки екшенів
-    // const dispatch = useDispatch();
+  const dispatch = useDispatch();// Отримуємо посилання на функцію відправки екшенів
+  const contact = useSelector(state => state.contacts);// ОТРИМАННЯ МАСИВУ 
 
 
     // INPUT - зберігаємо данні при вводі текста 
@@ -23,15 +22,22 @@ export const ContactForm =({addContact})=> {
       if (name === "number") {setNumber(value);}
     };
 
+
+    // ADD CONTACT - додаємо контакт до масиву
+    const addContact = ({ name, number }) => {
+      if (contact.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
+            alert(`${name} is alredy in contacts`); // якщо є, то виводимо повідомлення
+      } else {
+            dispatch(addContacts( name, number )); // ADD CONTACT - зберігаємо
+      }
+    }
+
     // РЕНДНЕРІНГ секції 
       return (
         <>
         <form className={css.form} 
                   onSubmit={evt => {
                     evt.preventDefault(); // відміна перезавантаження сторінки
-                     // Викликаємо генератор екшену та передаємо текст завдання для поля payload
-                     // Відправляємо результат – екшен створення завдання
-                    // dispatch(addContacts( name, number ));
                     addContact({ name, number }); // Передача стану компонента до addContact як (props) з батьківського компоненту.
                     setName("") // очищення вмісту форми
                     setNumber(""); // очищення вмісту форми
@@ -63,8 +69,3 @@ export const ContactForm =({addContact})=> {
         </>
         
     ); }
-
-  
-  ContactForm.propTypes = {
-    addContact: PropTypes.func.isRequired, // функція
-  }
