@@ -7,17 +7,18 @@ import { deleteContacts } from "../../redux/tasksContacts";
 
 export const ContactsList = () =>{
     const dispatch = useDispatch();// Отримуємо посилання на функцію відправки екшенів
-  
-    const contactDD = useSelector(state => state.contacts);// ОТРИМАННЯ МАСИВУ 
+    const contacts = useSelector(state => state.contacts.items);// ОТРИМАННЯ МАСИВУ 
     const filter = useSelector(state => state.filter);// ОТРИМАННЯ FILTER
     
     // FILTER - фільтруємо введені данні 
-    const filterOn = contactDD.filter(state => state.name.toLowerCase().includes(filter.toLowerCase()));
+    const filteredContacts = contacts.filter(contact =>
+      contact.name.toLowerCase().includes(filter.toLowerCase())
+    );
 
 
     return (
             <ul className={css.contacts__list}>
-                {filterOn.map(contact => {
+                {filteredContacts.map(contact => {
                 return (<li>
                    <p>{contact.name}</p>
                    <p>{contact.number}</p> 

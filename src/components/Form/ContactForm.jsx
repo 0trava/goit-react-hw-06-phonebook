@@ -12,7 +12,7 @@ export const ContactForm =()=> {
 
 
   const dispatch = useDispatch();// Отримуємо посилання на функцію відправки екшенів
-  const contact = useSelector(state => state.contacts);// ОТРИМАННЯ МАСИВУ 
+  const contact = useSelector(state => state.contacts.items);// ОТРИМАННЯ МАСИВУ 
 
 
     // INPUT - зберігаємо данні при вводі текста 
@@ -25,6 +25,7 @@ export const ContactForm =()=> {
 
     // ADD CONTACT - додаємо контакт до масиву
     const addContact = ({ name, number }) => {
+      console.log(contact);
       if (contact.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
             alert(`${name} is alredy in contacts`); // якщо є, то виводимо повідомлення
       } else {
