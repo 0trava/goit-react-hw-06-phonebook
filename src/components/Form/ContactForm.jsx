@@ -25,7 +25,6 @@ export const ContactForm =()=> {
 
     // ADD CONTACT - додаємо контакт до масиву
     const addContact = ({ name, number }) => {
-      console.log(contact);
       if (contact.some(value => value.name.toLocaleLowerCase() === name.toLocaleLowerCase())) {
             alert(`${name} is alredy in contacts`); // якщо є, то виводимо повідомлення
       } else {

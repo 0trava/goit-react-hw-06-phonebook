@@ -25,7 +25,6 @@ const tasksSlice = createSlice({
         // window.localStorage.setItem(CONTACTS, JSON.stringify(state));
       },
         prepare(nameAdd, numberAdd) {
-            console.log(nameAdd, numberAdd);
             return {
               payload: {
                 id: nanoid(),
